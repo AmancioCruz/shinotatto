@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio visual mobile first de Shinotatto.">
+    <title>Shinotatto | Tattoo Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="estilos/estilo.css">
+    <script src="scripts/script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="#inicio" aria-label="Ir al inicio">Shino<span>tatto</span></a>
+
+        <nav class="site-nav" aria-label="Menú principal">
+            <a href="#portafolio">Portafolio</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero reveal" id="inicio" aria-labelledby="hero-title">
+            <img class="hero-image" src="recursos/foto_7.png" alt="">
+            <div class="hero-content">
+                <span class="eyebrow">Estudio de tatuaje</span>
+                <h1 id="hero-title">Tatuajes con identidad propia</h1>
+                <p>Diseños personalizados en tinta negra.</p>
+                <a class="primary-button" href="https://wa.me/" target="_blank" rel="noreferrer">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Contactar por WhatsApp
+                </a>
+            </div>
+        </section>
+
+        <section class="style-note reveal" aria-label="Aviso de estilo">
+            <div>
+                <i class="fa-solid fa-circle-info"></i>
+                <p>Trabajamos principalmente en blackwork, línea fina y diseños en tinta negra.</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-ban"></i>
+                <p>No realizamos realismo ni tatuajes a full color.</p>
+            </div>
+        </section>
+
+        <section class="portfolio reveal" id="portafolio" aria-labelledby="portfolio-title">
+            <div class="portfolio-head">
+                <div>
+                    <span class="eyebrow"><i class="fa-regular fa-images"></i> Portafolio</span>
+                    <h2 id="portfolio-title">Trabajos</h2>
+                </div>
+                <span class="piece-count"><strong id="visible-count">17</strong> fotos</span>
+            </div>
+
+            <div class="filter-bar" aria-label="Filtrar trabajos">
+                <button class="filter-chip is-active" type="button" data-filter="todos">Todos</button>
+                <button class="filter-chip" type="button" data-filter="blackwork">Blackwork</button>
+                <button class="filter-chip" type="button" data-filter="fine-line">Fine line</button>
+                <button class="filter-chip" type="button" data-filter="minimalista">Minimalista</button>
+                <button class="filter-chip" type="button" data-filter="letras">Letras</button>
+            </div>
+
+            <div class="gallery-grid">
+                <button class="tattoo-card tall" type="button" data-filter="blackwork" data-style="Blackwork">
+                    <img src="recursos/foto_1.png" alt="Trabajo de tatuaje blackwork">
+                </button>
+                <button class="tattoo-card short" type="button" data-filter="fine-line" data-style="Fine line">
+                    <img src="recursos/foto_2.png" alt="Trabajo de tatuaje fine line">
+                </button>
+                <button class="tattoo-card medium" type="button" data-filter="blackwork" data-style="Blackwork">
+                    <img src="recursos/foto_3.png" alt="Trabajo de tatuaje blackwork">
+                </button>
+                <button class="tattoo-card tall" type="button" data-filter="letras" data-style="Letras">
+                    <img src="recursos/foto_4.png" alt="Trabajo de tatuaje letras">
+                </button>
+                <button class="tattoo-card medium" type="button" data-filter="blackwork" data-style="Blackwork">
+                    <img src="recursos/foto_5.png" alt="Trabajo de tatuaje blackwork">
+                </button>
+                <button class="tattoo-card short" type="button" data-filter="minimalista" data-style="Minimalista">
+                    <img src="recursos/foto_6.png" alt="Trabajo de tatuaje minimalista">
+                </button>
+                <button class="tattoo-card tall" type="button" data-filter="fine-line" data-style="Fine line">
+                    <img src="recursos/foto_7.png" alt="Trabajo de tatuaje fine line">
+                </button>
+                <button class="tattoo-card medium" type="button" data-filter="letras" data-style="Letras">
+                    <img src="recursos/foto_8.png" alt="Trabajo de tatuaje letras">
+                </button>
+                <button class="tattoo-card short" type="button" data-filter="blackwork" data-style="Blackwork">
+                    <img src="recursos/foto_9.jpeg" alt="Trabajo de tatuaje blackwork">
+                </button>
+                <button class="tattoo-card tall" type="button" data-filter="minimalista" data-style="Minimalista">
+                    <img src="recursos/foto_10.png" alt="Trabajo de tatuaje minimalista">
+                </button>
+                <button class="tattoo-card medium" type="button" data-filter="minimalista" data-style="Minimalista">
+                    <img src="recursos/foto_11.png" alt="Trabajo de tatuaje minimalista">
+                </button>
+                <button class="tattoo-card tall" type="button" data-filter="blackwork" data-style="Blackwork">
+                    <img src="recursos/foto_12.png" alt="Trabajo de tatuaje blackwork">
+                </button>
+                <button class="tattoo-card short" type="button" data-filter="fine-line" data-style="Fine line">
+                    <img src="recursos/foto_13.png" alt="Trabajo de tatuaje fine line">
+                </button>
+                <button class="tattoo-card medium" type="button" data-filter="minimalista" data-style="Minimalista">
+                    <img src="recursos/foto_14.png" alt="Trabajo de tatuaje minimalista">
+                </button>
+                <button class="tattoo-card tall" type="button" data-filter="letras" data-style="Letras">
+                    <img src="recursos/foto_15.png" alt="Trabajo de tatuaje letras">
+                </button>
+                <button class="tattoo-card medium" type="button" data-filter="blackwork" data-style="Blackwork">
+                    <img src="recursos/foto_16.png" alt="Trabajo de tatuaje blackwork">
+                </button>
+                <button class="tattoo-card short" type="button" data-filter="fine-line" data-style="Fine line">
+                    <img src="recursos/foto_17.png" alt="Trabajo de tatuaje fine line">
+                </button>
+            </div>
+        </section>
+
+        <section class="contact reveal" id="contacto" aria-labelledby="contact-title">
+            <span class="eyebrow">Contacto</span>
+            <h2 id="contact-title">¿Tienes una idea?</h2>
+            <p>Puedo ayudarte a convertirla en un diseño único. Escríbeme por WhatsApp y desde ahí revisamos tu idea para cotizar.</p>
+            <a class="primary-button" href="https://wa.me/" target="_blank" rel="noreferrer">
+                <i class="fa-brands fa-whatsapp"></i>
+                Enviar mensaje por WhatsApp
+            </a>
+        </section>
+    </main>
+
+    <a class="whatsapp-float" href="https://wa.me/" target="_blank" rel="noreferrer" aria-label="Abrir WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <div class="modal" hidden>
+        <button class="modal-close" type="button" aria-label="Cerrar">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="modal-media">
+            <img src="" alt="">
+        </div>
+        <div class="modal-info">
+            <span class="modal-style"></span>
+            <p>¿Te gusta este estilo? Puedo diseñar algo personalizado para ti.</p>
+            <a class="primary-button" href="https://wa.me/" target="_blank" rel="noreferrer">
+                <i class="fa-brands fa-whatsapp"></i>
+                Quiero algo como este
+            </a>
+        </div>
+    </div>
+</body>
+</html>

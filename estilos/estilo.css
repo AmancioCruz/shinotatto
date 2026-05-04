@@ -1,0 +1,550 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    color-scheme: dark;
+    --bg: #050506;
+    --panel: #101114;
+    --panel-soft: #17181c;
+    --ink: #f8f8fb;
+    --muted: #a3a6ad;
+    --muted-2: #737780;
+    --line: rgba(255, 255, 255, 0.1);
+    --line-soft: rgba(255, 255, 255, 0.06);
+    --accent: #1f6fff;
+    --accent-soft: rgba(31, 111, 255, 0.16);
+    --shadow: 0 22px 70px rgba(0, 0, 0, 0.42);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    letter-spacing: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    border: 0;
+    font: inherit;
+}
+
+.site-header {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--line-soft);
+    background: rgba(5, 5, 6, 0.96);
+    backdrop-filter: blur(14px);
+}
+
+.brand {
+    flex: 0 0 auto;
+    font-size: clamp(1.05rem, 6vw, 1.35rem);
+    font-style: italic;
+    font-weight: 950;
+    letter-spacing: -0.07em;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.brand span {
+    color: var(--accent);
+}
+
+.site-nav {
+    position: static;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    min-width: 0;
+    overflow-x: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    backdrop-filter: none;
+    scrollbar-width: none;
+}
+
+.site-nav a {
+    flex: 0 0 auto;
+    display: inline-flex;
+    justify-content: center;
+    padding: 0.52rem 0.62rem;
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+.site-nav::-webkit-scrollbar {
+    display: none;
+}
+
+main {
+    width: min(100%, 92rem);
+    margin: 0 auto;
+}
+
+.hero {
+    position: relative;
+    min-height: 72svh;
+    display: grid;
+    align-items: end;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 6.7rem 1rem 2rem;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.58) 54%, rgba(0, 0, 0, 0.35)),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(5, 5, 6, 0.98));
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 58% center;
+    filter: grayscale(1) contrast(1.2) brightness(0.58);
+}
+
+.hero-content {
+    display: grid;
+    gap: 0.9rem;
+    max-width: 25rem;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: fit-content;
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+    margin: 0;
+}
+
+h1 {
+    max-width: 12ch;
+    font-size: clamp(2.45rem, 12vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+}
+
+h2 {
+    font-size: clamp(1.6rem, 8vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.hero p,
+.contact p,
+.style-note p,
+.modal-info p {
+    color: var(--muted);
+    line-height: 1.5;
+}
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    width: fit-content;
+    min-height: 3rem;
+    padding: 0 1.05rem;
+    border: 1px solid rgba(31, 111, 255, 0.78);
+    border-radius: 999px;
+    background: rgba(31, 111, 255, 0.12);
+    color: var(--ink);
+    font-size: 0.86rem;
+    font-weight: 850;
+    transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.primary-button i {
+    color: var(--accent);
+}
+
+.style-note {
+    display: grid;
+    gap: 0.7rem;
+    padding: 1rem;
+}
+
+.style-note div {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.75rem;
+    align-items: start;
+    padding: 0.9rem;
+    border: 1px solid var(--line-soft);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.style-note i {
+    color: var(--accent);
+    margin-top: 0.18rem;
+}
+
+.portfolio {
+    padding: 1rem 1rem 3rem;
+}
+
+.portfolio-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.piece-count {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    padding: 0.45rem 0.65rem;
+    border: 1px solid var(--line-soft);
+    border-radius: 999px;
+    color: var(--muted-2);
+    font-size: 0.72rem;
+}
+
+.piece-count strong {
+    color: var(--accent);
+}
+
+.filter-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    gap: 0.5rem;
+    margin: 0 -1rem 1.1rem;
+    overflow-x: auto;
+    padding: 0.7rem 1rem;
+    background: linear-gradient(180deg, rgba(5, 5, 6, 0.92), rgba(5, 5, 6, 0.72));
+    backdrop-filter: blur(14px);
+    scrollbar-width: none;
+}
+
+.filter-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.filter-chip {
+    flex: 0 0 auto;
+    min-height: 2.25rem;
+    padding: 0 0.9rem;
+    border: 1px solid var(--line-soft);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.045);
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 800;
+    transition: transform 180ms ease, color 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.filter-chip.is-active {
+    border-color: rgba(31, 111, 255, 0.85);
+    background: var(--accent-soft);
+    color: var(--ink);
+}
+
+.gallery-grid {
+    columns: 2;
+    column-gap: 0.85rem;
+}
+
+.tattoo-card {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 16rem;
+    margin: 0 0 0.85rem;
+    overflow: hidden;
+    break-inside: avoid;
+    border: 1px solid var(--line-soft);
+    border-radius: 1rem;
+    background: var(--panel);
+    color: var(--ink);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    animation: riseIn 520ms ease both;
+}
+
+.tattoo-card.short {
+    min-height: 13rem;
+}
+
+.tattoo-card.medium {
+    min-height: 18rem;
+}
+
+.tattoo-card.tall {
+    min-height: 23.5rem;
+}
+
+.tattoo-card:nth-child(5n + 2) {
+    min-height: 15rem;
+}
+
+.tattoo-card:nth-child(4n + 3) {
+    min-height: 21rem;
+}
+
+.tattoo-card img {
+    width: 100%;
+    height: 100%;
+    min-height: inherit;
+    object-fit: cover;
+    filter: grayscale(0.08) contrast(1.06);
+    transition: transform 260ms ease, filter 260ms ease;
+}
+
+.tattoo-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 48%, rgba(0, 0, 0, 0.72));
+    pointer-events: none;
+}
+
+.tattoo-card.is-hidden {
+    display: none;
+}
+
+.contact {
+    display: grid;
+    gap: 0.9rem;
+    margin: 0 1rem 5.6rem;
+    padding: 1.2rem;
+    border: 1px solid var(--line-soft);
+    border-radius: 1.2rem;
+    background:
+        linear-gradient(145deg, rgba(31, 111, 255, 0.12), transparent 48%),
+        rgba(255, 255, 255, 0.035);
+}
+
+.whatsapp-float {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 18;
+    display: grid;
+    place-items: center;
+    width: 3.4rem;
+    height: 3.4rem;
+    border: 1px solid rgba(31, 111, 255, 0.8);
+    border-radius: 50%;
+    background: rgba(16, 17, 20, 0.86);
+    color: var(--accent);
+    font-size: 1.35rem;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(14px);
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 0.9rem;
+    padding: 4rem 1rem 1rem;
+    background: rgba(5, 5, 6, 0.96);
+    opacity: 1;
+    backdrop-filter: blur(18px);
+    transition: opacity 180ms ease;
+}
+
+.modal[hidden] {
+    display: none;
+}
+
+.modal-media {
+    display: grid;
+    min-height: 0;
+    place-items: center;
+}
+
+.modal-media img {
+    width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+}
+
+.modal-info {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 1px solid var(--line-soft);
+    border-radius: 1rem;
+    background: rgba(16, 17, 20, 0.92);
+}
+
+.modal-style {
+    color: var(--accent);
+    font-size: 0.74rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: rgba(16, 17, 20, 0.82);
+    color: var(--ink);
+    font-size: 1.1rem;
+    backdrop-filter: blur(12px);
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 520ms ease, transform 520ms ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes riseIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (hover: hover) {
+    .tattoo-card:hover img {
+        transform: scale(1.06);
+        filter: grayscale(0) contrast(1.12) saturate(1.04);
+    }
+
+    .primary-button:hover,
+    .filter-chip:hover,
+    .whatsapp-float:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent);
+        background: var(--accent-soft);
+    }
+}
+
+@media (min-width: 42rem) {
+    .site-header {
+        padding-inline: 1.35rem;
+    }
+
+    .hero,
+    .portfolio,
+    .style-note {
+        padding-inline: 1.35rem;
+    }
+
+    .style-note {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gallery-grid {
+        columns: 3;
+        column-gap: 1rem;
+    }
+
+    .tattoo-card {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (min-width: 68rem) {
+    .site-nav {
+        width: auto;
+    }
+
+    .site-nav a {
+        flex: 0 0 auto;
+        padding-inline: 0.9rem;
+    }
+
+    .hero {
+        min-height: 66svh;
+        padding-inline: 1.6rem;
+    }
+
+    .gallery-grid {
+        columns: 4;
+        column-gap: 1.1rem;
+    }
+
+    .modal {
+        grid-template-columns: minmax(0, 1fr) 22rem;
+        grid-template-rows: 1fr;
+        padding: 4.5rem 1.25rem 1.25rem;
+    }
+
+    .modal-info {
+        align-self: end;
+    }
+}
+
+@media (min-width: 92rem) {
+    .gallery-grid {
+        columns: 5;
+    }
+}
