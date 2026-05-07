@@ -1,31 +1,96 @@
-const filterButtons = document.querySelectorAll(".filter-chip");
-const cards = Array.from(document.querySelectorAll(".tattoo-card"));
+const gallery = document.querySelector("[data-gallery]");
 const visibleCount = document.querySelector("#visible-count");
 const modal = document.querySelector(".modal");
 const modalImage = modal?.querySelector("img");
 const modalStyle = modal?.querySelector(".modal-style");
 const modalClose = modal?.querySelector(".modal-close");
 const revealItems = document.querySelectorAll(".reveal");
+const whatsappButtons = document.querySelectorAll(".whatsapp-contact");
+const whatsappPhone = "656 267 1995";
+const imageExtensions = ["png", "jpeg", "jpg", "webp"];
+const maxMissingPhotos = 8;
 
-function updateVisibleCount() {
-    const count = cards.filter((card) => !card.classList.contains("is-hidden")).length;
+let cards = [];
 
-    if (visibleCount) {
-        visibleCount.textContent = String(count);
-    }
+const heightPattern = ["tall", "short", "medium", "tall", "medium", "short"];
+
+function getPhotoHeight(index) {
+    return heightPattern[(index - 1) % heightPattern.length];
 }
 
-function setFilter(filter) {
-    filterButtons.forEach((button) => {
-        button.classList.toggle("is-active", button.dataset.filter === filter);
-    });
+function checkImage(src) {
+    return new Promise((resolve) => {
+        const image = new Image();
 
-    cards.forEach((card) => {
-        const isVisible = filter === "todos" || card.dataset.filter === filter;
-        card.classList.toggle("is-hidden", !isVisible);
+        image.onload = () => resolve(src);
+        image.onerror = () => resolve(null);
+        image.src = src;
     });
+}
 
+async function findPhoto(index) {
+    for (const extension of imageExtensions) {
+        const src = `recursos/foto_${index}.${extension}`;
+        const found = await checkImage(src);
+
+        if (found) {
+            return found;
+        }
+    }
+
+    return null;
+}
+
+function createTattooCard(src, index) {
+    const card = document.createElement("button");
+    const image = document.createElement("img");
+
+    card.className = `tattoo-card ${getPhotoHeight(index)}`;
+    card.type = "button";
+    card.dataset.style = "Trabajo";
+
+    image.src = src;
+    image.alt = "Trabajo de tatuaje";
+
+    card.append(image);
+    card.addEventListener("click", () => openModal(card));
+
+    return card;
+}
+
+async function loadGallery() {
+    if (!gallery) {
+        return;
+    }
+
+    gallery.innerHTML = "";
+
+    const fragment = document.createDocumentFragment();
+    let missingCount = 0;
+    let index = 1;
+
+    while (missingCount < maxMissingPhotos) {
+        const src = await findPhoto(index);
+
+        if (src) {
+            fragment.append(createTattooCard(src, index));
+            missingCount = 0;
+        } else {
+            missingCount += 1;
+        }
+
+        index += 1;
+    }
+
+    gallery.append(fragment);
+    cards = Array.from(gallery.querySelectorAll(".tattoo-card"));
     updateVisibleCount();
+}
+
+function updateVisibleCount() {
+    if (visibleCount) {
+        visibleCount.textContent = String(cards.length);
+    }
 }
 
 function openModal(card) {
@@ -51,12 +116,17 @@ function closeModal() {
     document.body.style.overflow = "";
 }
 
-filterButtons.forEach((button) => {
-    button.addEventListener("click", () => setFilter(button.dataset.filter || "todos"));
-});
+whatsappButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const icon = button.querySelector("i")?.outerHTML || "";
 
-cards.forEach((card) => {
-    card.addEventListener("click", () => openModal(card));
+        button.classList.add("is-showing-phone");
+        button.setAttribute("aria-label", `WhatsApp: ${whatsappPhone}`);
+
+        if (!button.classList.contains("whatsapp-float")) {
+            button.innerHTML = `${icon}${whatsappPhone}`;
+        }
+    });
 });
 
 modalClose?.addEventListener("click", closeModal);
@@ -88,4 +158,4 @@ if ("IntersectionObserver" in window) {
     revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
-updateVisibleCount();
+loadGallery();
